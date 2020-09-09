@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>Random Quote Genrator</title>
+
+  </head>
+
+     <body
+       <div class="container">
+          <div class="row py-4">
+           <div class="col-md-6 offset-md-3">
+
+           <wrapper id="quote-box">
+            <div class="card">
+             <div class="card-header text-center">
+               Random Quote Generator
+              </div>
+               <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                 <p><div id="text"></div></p>
+                  <footer class="blockquote-footer row py-2"><div id="author"></div></footer>
+                   <button id="new-quote" onClick="generateQuote();" class="btn btn-success">New Quote</button>
+                    <a href="#" id="tweet-quote" target="_blank" class="btn btn-primary">Tweet Quote</a>
+                 </blockquote>
+               </div>
+              </div>
+             </div>
+           </div>
+         </div>
+       </wrapper>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <script>
+          let quoteBank = [
+    {
+    quote:"I think, therefore I am.",
+    author: "René Descartes"
+    },{
+     quote:"No man ever steps in the same river twice, for it's not the same river and he's not the same man.",
+     author: "Heraclitus"
+    },{
+     quote:"People say nothing is impossible, but I do nothing every day.",
+     author: "A. A. Milne"
+    },{
+     quote:"If I were two-faced, would I be wearing this one?",
+     author: "Abraham Lincoln"
+    },{
+     quote:"Before you judge a man, walk a mile in his shoes. After that who cares?... He’s a mile away and you’ve got his shoes!",
+     author: "Billy Connolly"
+    },{
+     quote:"The only mystery in life is why the kamikaze pilots wore helmets.",
+     author: "Al McGuire"
+    },{
+     quote:"Light travels faster than sound. This is why some people appear bright until you hear them speak.",
+     author: "Alan Dundes"
+    },{
+     quote:"The difference between stupidity and genius is that genius has its limits.",
+     author: "Albert Einstein"
+    },{
+     quote:"All the things I really like to do are either immoral, illegal or fattening.",
+     author: "Alexander Woollcott"
+    },{
+     quote:"War is God’s way of teaching Americans geography.",
+     author: "Ambrose Bierce"
+    },{
+     quote:"The average dog is a nicer person than the average person.",
+     author: "Andy Rooney"
+    },{
+     quote:"At every party there are two kinds of people – those who want to go home and those who don’t. The trouble is, they are usually married to each other.",
+     author: "Ann Landers"
+    },{
+     quote:"If you want your children to listen, try talking softly to someone else.",
+     author: "Ann Landers"
+    },{
+     quote:"Doctors are just the same as lawyers; the only difference is that lawyers merely rob you, whereas doctors rob you and kill you too.",
+     author: "Anton Chekhov"
+    }
+    ]
+
+    window.onload = init;
+      function init(){
+        generateQuote()
+      }
+    function generateQuote() {
+    let quoteSize = quoteBank.length;
+    let randomQuoteIndex = Math.floor(Math.random() * quoteSize)
+    let randomQuoteData = quoteBank[randomQuoteIndex]
+
+    let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&text=";
+
+    let quoteForTwitter = randomQuoteData.quote.replace(/ /g, "%20");
+     twitterLink += quoteForTwitter
+
+    let authorForTwitter = randomQuoteData.author.replace(/ /g, "%20");
+     twitterLink += " ~ " + authorForTwitter
+
+
+
+     document.getElementById("tweet-quote").href = twitterLink;
+     document.getElementById("text").innerText = randomQuoteData.quote;
+     document.getElementById("author").innerText = randomQuoteData.author;
+    }
+
+    </script>
+
+     </body>
+
+     </html>
